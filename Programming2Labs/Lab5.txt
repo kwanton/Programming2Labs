@@ -1,0 +1,67 @@
+This program will
+Input: "Stock.txt", stock input, tender amount
+Output: receit, total
+Formulas: subtotal * 1.08 = total
+
+start
+set precision to 2, show point, and set fixed
+create item structure array (length 9) with stock number, description and price variables
+define input file
+open input file
+REPEAT 9 times
+    create a new structure
+    read the input file and add stock number to structure
+    read the input file and add description to structure
+    read the input file and add price to structure
+ENDREPEAT
+close input file
+sort structures by stock number
+REPEAT until stock input is equal to 0
+    set found item to false
+    ask user for a stock input and let them know "0" will calculate a total
+    REPEAT until found item is true or if has repeated nine times or if stock
+    input is equal to 0
+        IF stock input is equal to stock number in current array
+            set found item to true
+        ENDIF
+    ENDREPEAT
+    IF stock input is equal to 0
+        do nothing
+    ELSE 
+	IF found item is false
+            Display error message
+	ENDIF
+    ELSE 
+	IF found item is true
+	    ask how many of the item the user wants
+            output successful value given, and description, item price*quantity and quantity
+	    REPEAT for how many quantity input
+                add "description, \setw(20) item price\n" to receit string
+                add item price to subtotal
+	    ENDREPEAT
+	ENDIF
+    ENDIF
+ENDREPEAT
+output subtotal
+set total equal to subtotal * 1.08
+output total
+set amount owed equal to total
+REPEAT while amount owed is greater than zero
+    ask for tender amount
+    IF tender amount is equal to or less than 0
+        output error message
+    ELSE
+        amount owed - tender amount
+    ENDIF
+    IF amount owed is greater than 0
+        output amount owed
+    ELSE
+        output transaction confirmation
+    ENDIF
+ENDREPEAT
+IF amount owed is less than zero
+    get absolute value of amount owed and display as change
+ENDIF
+save receit, subtotal, total, and absolute value of amount owed as change to
+new file "Sales.txt"
+end

@@ -1,0 +1,61 @@
+This program will read an input file with names and heights and sort them
+Input: user defined file
+Output: Sorted List
+Formulas: N/A
+
+start
+define input file
+REPEAT while file name is incorrect
+    ask user for file name
+    IF file is incorrrect
+	output error message
+    ELSE
+	out success message
+	open input file
+    ENDIF
+ENDREPEAT
+define private structure with last name, first name, and height variables
+create private list with length 10
+REPEAT 10 times
+    read the input file and add last name to new private structure
+    read the input file and add first name to new private structure
+    read the input file and add height to new private structure
+ENDREPEAT
+close input file
+output unordered list
+set loops = 1
+set switch = true
+REPEAT while switch = true and loops <= 10
+    set subscript = 0
+    switch = false
+    REPEAT while subscript < 9
+	IF private(subscript) height > private(subscript + 1) height
+	    set temp = private(subscript)
+	    set private(subscript) = private(subscript + 1)
+	    set private(subscript + 1) = temp
+	    switch = true
+	ELSE
+	    IF private(subscript) height = private(subscript + 1) height
+		IF string compare (private(subscript) last name, private(subscript + 1) last name) > 0
+		    set temp = private(subscript)
+	    	    set private(subscript) = private(subscript + 1)
+	    	    set private(subscript + 1) = temp
+	    	    switch = true
+		ELSE
+		    IF string compare (private(subscript) last name, private(subscript + 1) last name) = 0
+			IF string compare (private(subscript) first name, private(subscript + 1) first name) > 0
+		    	    set temp = private(subscript)
+	    	    	    set private(subscript) = private(subscript + 1)
+	    	    	    set private(subscript + 1) = temp
+	    	    	    switch = true
+			ENDIF
+		    ENDIF
+		ENDIF
+	    ENDIF
+	ENDIF
+	increment subscript
+    ENDIF
+    increment loops
+ENDREPEAT
+output ordered list with last name, first name, and height
+end

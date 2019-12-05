@@ -1,0 +1,20 @@
+This program will take in a day, month, and year from the user and output 3 different formats for that date.
+Inputs: Day, Month, Year
+Outputs: First Date, Second Date, Third Date
+Formulas: None
+
+start
+create a list of month names associated with their respective number (ie 1 = january)
+REPEAT until day >= 1 and <= 31
+	ask user for the day
+ENDREPEAT
+REPEAT until month >= 1 and <= 12
+	ask user for the month
+ENDREPEAT
+REPEAT until year > 0
+	ask user for the year
+ENDREPEAT
+output [month name] [day], [year]
+output [month]/[day]/[year]
+output [day] [month name] [year]
+end

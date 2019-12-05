@@ -1,0 +1,75 @@
+This program will be a game about guiding a pig on a 10x10 grid
+Inputs: X Start Position, Y Start Position, Move Direction
+Outputs: None
+Formulas: None
+
+start
+create a 2d array for the grid map
+REPEAT until starting location is not out of bounds
+	ask user for starting location
+ENDREPEAT
+REPEAT if truffle location and starting location are the same.
+	generate a random location in array for where truffle is
+ENDREPEAT
+set starting location to current location
+place current location under visited
+REPEAT 10 times or if a game over occurs
+	clear screen
+	REPEAT 10 times for x axis
+		REPEAT 10 times for y axis
+			IF current space is current location
+				output an "@"
+			ELSE
+				IF current space is visited
+					output an "x"
+				ENDIF
+			ELSE
+				output a "o"
+			ENDIF
+		ENDREPEAT
+	ENDREPEAT
+	REPEAT for spaces to left, center, and to right on the x-axis
+		REPEAT for spaces to left, center, to right on the y-axis
+			IF no adjacent spaces can be moved towards
+				set game over to true
+				set lost to true
+			ENDIF
+		ENDREPEAT
+	ENDREPEAT
+	IF lost is false
+		output "the direction of the truffle is..."
+		IF current location y > truffle location y
+			output "north"
+		ELSE
+			IF current location y < truffle location y
+				output "south"
+		ENDIF
+		IF current location x < truffle location x
+			output "east"
+		ELSE
+			IF current location x > truffle location x
+				output "west"
+		ENDIF
+		REPEAT until next location is not out of bounds or on a visited space
+			ask player for move direction
+			calculate next location from move direction
+		ENDREPEAT
+		set current location to next location
+		IF current location is the same as truffle location
+			set game over to true
+			set win to true
+		ELSE
+			place current location under visited
+		ENDIF
+	ENDIF
+ENDREPEAT
+IF win is true
+	congratulate player on victory
+ELSE
+	IF lost is true
+		inform player that they got stuck and couldn't move anywhere else
+	ENDIF
+ELSE
+	inform player that they died of starvation and should feel bad
+ENDIF
+end

@@ -1,0 +1,32 @@
+This program will take the radii of three pieces of three different snowman and
+calculate the volume of all three snowmen
+Inputs: 9 radii
+Outputs: Papa Volume, Mama Volume, Baby Volume, Family Volume
+Formulas: Volume = 4/3*PI*r^3
+
+start
+REPEAT three times
+    snowman = 0
+    IF snowman is equal to 0
+        REPEAT three times
+            ask user for radius of nth body part of papa snowman
+            Add 4/3*PI*radius^3 to papa volume
+        ENDREPEAT
+        output papa volume
+    ELSE snowman is equal to 1
+        REPEAT three times
+            ask user for radius of nth body part of mama snowman
+            Add 4/3*PI*radius^3 to mama volume
+        ENDREPEAT
+        output mama volume
+    ELSE snowman is equal to 2
+        REPEAT three times
+            ask user for radius of nth body part of baby snowman
+            Add 4/3*PI*radius^3 to baby volume
+        ENDREPEAT
+        output baby volume
+    ENDIF
+    increase snowman by 1
+ENDREPEAT
+add papa volume, mama volume, and baby volume together to make family volume
+output family volume

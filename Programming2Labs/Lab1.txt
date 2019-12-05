@@ -1,0 +1,55 @@
+This program will
+Input: "Stock.txt", stock input, tender amount
+Output: receit, total
+Formulas: subtotal * 1.08 = total
+
+start
+set precision to 2, show point, and set fixed
+define input file
+REPEAT until stock input is equal to 0
+    set found item to false
+    ask user for a stock input and let them know "0" will calculate a total
+    REPEAT until found item is true or if has repeated nine times or if stock
+    input is equal to 0
+        open input file "Stock.txt"
+        get value from input file and set to stock number
+        get value from input file and set to description
+        get value from input file and set to item price
+        IF stock input is equal to stock number
+            set found item to true
+        ENDIF
+    ENDREPEAT
+    IF stock input is equal to 0
+        do nothing
+    ELSE found item is false
+        Display error message
+    ELSE found item is true
+        output successful value given, and description and item price
+        add "description, \setw(20) item price\n" to receit string
+        add item price to subtotal
+    ENDIF
+    close input file
+ENDREPEAT
+output subtotal
+set total equal to subtotal * 1.08
+output total
+set amount owed equal to total
+REPEAT while amount owed is greater than zero
+    ask for tender amount
+    IF tender amount is equal to or less than 0
+        output error message
+    ELSE
+        amount owed - tender amount
+    ENDIF
+    IF amount owed is greater than 0
+        output amount owed
+    ELSE
+        output transaction confirmation
+    ENDIF
+ENDREPEAT
+IF amount owed is less than zero
+    get absolute value of amount owed and display as change
+ENDIF
+save receit, subtotal, total, and absolute value of amount owed as change to
+new file "Sales.txt"
+end

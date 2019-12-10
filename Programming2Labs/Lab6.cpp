@@ -1,6 +1,6 @@
 //Blake Blakeslee MW
-//Lab#
-//Program Description
+//Lab6
+//Takes in a list of names and heights and sorts them accordingly
 
 #include <iostream>
 #include <fstream>
@@ -23,7 +23,7 @@ int main()
 	bool incorrectFile;
 	cadet cadetList[10];
 	
-	//get file name and open inputfile
+	//get file name from user and open inputfile
 	do {
 		incorrectFile = true;
 		cout << "Please input the file name + extension: ";
@@ -59,6 +59,7 @@ int main()
 	while (trigger == true && loops <= 10) {
 		int i = 0;
 		trigger = false;
+		//three nested bubble sorts
 		while (i < 9) {
 			if (cadetList[i].height > cadetList[i + 1].height) {
 				cadet temp;
@@ -86,8 +87,10 @@ int main()
 					}
 				}
 			}
+			//increment
 			i++;
 		}
+		//increment
 		loops++;
 	}
 	
@@ -98,7 +101,6 @@ int main()
 				" - " << cadetList[i].height << endl;
 	}
 	cout << endl;
-	
 	cout << endl;
 	return 0;
 }

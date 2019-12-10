@@ -1,6 +1,6 @@
 //Blake Blakeslee MW
-//Lab#
-//Program Description
+//Lab5
+//Recreation of lab 1 using array of structures.
 
 #include <iostream>
 #include <iomanip>

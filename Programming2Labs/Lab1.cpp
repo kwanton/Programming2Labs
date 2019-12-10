@@ -1,6 +1,6 @@
 //Blake Blakeslee MW
-//Lab#
-//Program Description
+//Lab1
+//Read from an input file of stock info and runs a basic cash register for the user
 
 #include <iostream>
 #include <fstream>

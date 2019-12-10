@@ -25,6 +25,7 @@ int main()
 	double subtotal;
 	double total;
 	
+	//create an output file
 	outputFile.open("Sales.txt");
 	
 	//ask for inputs until '0' is input
@@ -39,6 +40,7 @@ int main()
 			inputFile >> stockNumber;
 			inputFile >> description;
 			inputFile >> itemPrice;
+			//if stock number is found, add item to both sales.txt and ending receit
 			if (stockInput == stockNumber) {
 				foundItem = true;
 				cout << stockNumber << setw(12) << description << setw(13) <<
@@ -47,9 +49,9 @@ int main()
 				outputFile << stockNumber << setw(12) << description <<
 				setw(13) << itemPrice << endl;
 			}
-			
 			i += 1;
 		}
+		//if item was not found
 		if (!foundItem && stockInput != 0) {
 			cout << "I didn't find the item you were looking for. Please try" <<
 			" again.\n";
@@ -63,15 +65,18 @@ int main()
 	total = subtotal * 1.08;
 	cout << "Total: $" << total << endl;
 	
+	//create an amount owed
 	double amountOwed = total;
 	double amountGiven;
 	
+	//while the user owes more then 0 dollars
 	while (amountOwed > 0) {
 		cout << "How much cash is being tendered? ";
 		cin >> amountGiven;
 		if (amountGiven <= 0) {
 			cout << "That's an incorrect value. Please try again.\n";
 		} else {
+			//subtract amount given and then check if user owes more
 			amountOwed -= amountGiven;
 			
 			if (amountOwed > 0) {
@@ -82,16 +87,19 @@ int main()
 		}
 	}
 	
+	//output receit info to sales.txt
 	outputFile << "Subtotal: $" << subtotal << endl;
 	outputFile << "Total: $" << total << endl;
 	outputFile << "Change: $" << abs(amountOwed) << endl;
 	
+	//output receit information
 	cout << "Subtotal: $" << subtotal << endl;
 	cout << "Total: $" << total << endl;
 	if (amountOwed < 0) {
 		cout << "Change: $" << abs(amountOwed) << endl;
 	}
 	
+	//close sales.txt
 	outputFile.close();
 	cout << endl;
 	return 0;

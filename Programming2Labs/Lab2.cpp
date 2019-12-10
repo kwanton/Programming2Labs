@@ -1,6 +1,6 @@
 //Blake Blakeslee MW
-//Lab#
-//Program Description
+//Lab2
+//Calculates volume of three different snowmen and their three snowballs.
 
 #include <iostream>
 #include <cmath>
@@ -25,6 +25,7 @@ double familyVol;
 
 int main()
 {
+	//do three times for each snowman in snowman family. Pass snowman name into function
 	for (snowmanCount = 0; snowmanCount < 3; snowmanCount++){
 		if (snowmanCount == 0) {
 			displayInstructions("daddy");
@@ -42,6 +43,7 @@ int main()
 	return 0;
 }
 
+//Asks the user for the radii of three different snowman. The snowman being calulcated for is passed into function
 void displayInstructions(string whichSnowman) {
 	cout << "Please give the first radius for " << whichSnowman
 	<< " snowman: ";
@@ -56,6 +58,7 @@ void displayInstructions(string whichSnowman) {
 	computeVolumes(radii1, radii2, radii3);
 }
 
+//takes in three radii and calculates the volume the the snowmen.
 void computeVolumes(double num1, double num2, double num3) {
 	if (snowmanCount == 0) {
 		daddyVol = ((4./3.)*PI*pow(num1, 3)) + ((4./3.)*PI*pow(num2, 3)) 
@@ -69,6 +72,7 @@ void computeVolumes(double num1, double num2, double num3) {
 	}
 }
 
+//Outputs all results for user to read
 void displayResults() {
 	familyVol = daddyVol + mommyVol + babyVol;
 	cout << "Daddy snowman's total volume is " << daddyVol << ".\n";

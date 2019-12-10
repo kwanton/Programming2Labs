@@ -121,6 +121,7 @@ int main()
 					} else
 					if (map[locationX + directionX-1][locationY + directionY-1]
 						== 3) {
+							//found truffle. winner.
 							cout << "You found the truffle!\n";
 							gameOver = true;
 							win = true;
@@ -131,31 +132,38 @@ int main()
 						map[locationX-1][locationY-1] = 1;
 					}
 				} else {
+					//tries to leave map
 					cout << "The pig tried leaving the grove, but fell " <<
 						"into a river. -Turn Wasted-\n";
 				}
 			} else {
+				//tries to leave map... again.
 				cout << "The pig tried leaving the grove, but fell into " <<
 						"a river. -Turn Wasted-\n";
 			}
 		} else if (directionNum == 5) {
+			//easter egg if you press '5' (5 would be stand still on a numpad)
 			cout << "You told the pig to stand in place and do nothing.\n";
 			cout << "He was happy to comply. -Turn Wasted-\n";
 		} else {
+			//user input not understood
 			cout << "The pig didn't understand you and ate a rock. ";
 			cout << "-Turn Wasted-\n";
 		}
 		
+		//prevents softlock
 		if (checkForStuck(locationX, locationY, map)){
 			gameOver = true;
 			softLock =true;
 		}
 		
+		//slap in a sentinal
 		if (gameOver) {
 			i = 10000;
 		}
 	}
 	
+	//output text depending on how the game ended.
 	if (win) {
 		cout << "Victory is yours and the pig will not become dinner... today.";
 		cout << "\nYou win!";
@@ -169,6 +177,7 @@ int main()
 				"demise to the effects of starvation. \nYou lose.";
 	}
 	
+	//output the map with the location of the truffle
 	cout << endl;
 	printBoard(map,true);
 	
@@ -216,6 +225,7 @@ bool checkForStuck(int locationX, int locationY, int map[][10]) {
 	return helpImStuck;
 }
 
+//string function that returns the direction the truffle is in
 string locateTruffle(int locationX, int locationY, int truffleX,
 					int truffleY) {
 	string compass;
@@ -232,6 +242,7 @@ string locateTruffle(int locationX, int locationY, int truffleX,
 	return compass;
 }
 
+//takes in the numpad input from user and converts to an x and y direction for use
 void calculateDirection(int directionNum, int *directionX, int *directionY){
 	if (directionNum >= 7 && directionNum <= 9){
 				*directionY = -1;
